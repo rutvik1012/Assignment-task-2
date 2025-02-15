@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 p-4 space-y-4">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-black font-bold">RM</div>
+                <div>
+                    <h2 class="text-lg font-semibold">Rutvik Makwana</h2>
+                    <p class="text-sm text-gray-400">KuJi Podcast</p>
+                </div>
+            </div>
+            <nav>
+                <ul class="space-y-2">
+                    <li class="bg-green-500 p-2 rounded-lg">Overview</li>
+                    <li class="text-gray-400">Episodes</li>
+                    <li class="text-gray-400">Media</li>
+                    <li class="text-gray-400">Materials</li>
+                    <li class="text-gray-400">Contacts</li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+            <h1 class="text-2xl font-bold">Dashboard Overview</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+                <div class="bg-gray-800 p-4 rounded-lg">
+                    <p class="text-gray-400">New Subscribers</p>
+                    <h2 class="text-xl font-bold">5,097</h2>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg">
+                    <p class="text-gray-400">Streams</p>
+                    <h2 class="text-xl font-bold">47,403</h2>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg">
+                    <p class="text-gray-400">Engagement Rate</p>
+                    <h2 class="text-xl font-bold">25.81</h2>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg">
+                    <p class="text-gray-400">Avg. Watch Time</p>
+                    <h2 class="text-xl font-bold">45.4 min</h2>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+                <div class="bg-gray-800 p-6 rounded-lg col-span-2">
+                    <canvas id="audienceChart"></canvas>
+                </div>
+                <div class="bg-green-500 p-6 rounded-lg text-black">
+                    <h2 class="text-lg font-bold">Webinars</h2>
+                    <p>Learn how you can earn more than 20% each month!</p>
+                    <a href="#" class="text-sm underline">Learn more</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('audienceChart').getContext('2d');
+        const audienceChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Dec 21', 'Dec 22', 'Dec 23', 'Dec 24', 'Dec 25', 'Dec 26', 'Dec 27'],
+                datasets: [{
+                    label: 'Audience Growth',
+                    data: [270000, 280000, 290000, 295000, 300000, 310000, 320000],
+                    backgroundColor: 'rgb(34, 197, 94)',
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: "white"
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: "white"
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
